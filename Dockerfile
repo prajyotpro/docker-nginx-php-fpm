@@ -44,7 +44,11 @@ COPY php/config/opcache.ini /usr/local/etc/php/conf.d/
 
 COPY ./app /var/www
 
+RUN rm -rf /etc/nginx/
 COPY nginx/config/ /etc/nginx/
+
+EXPOSE 80/tcp
+EXPOSE 80/udp
 
 COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 RUN ["chmod", "+x", "/tmp/docker-entrypoint.sh"]
